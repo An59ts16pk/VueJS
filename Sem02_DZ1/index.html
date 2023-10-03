@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seminar 02 DZ1</title>
+</head>
+<body>
+    <!--
+    1. Создать кнопку "Перевернуть". При клике на кнопку текст кнопки должен перевернуться 
+    и отобразиться в обратном порядке.
+    2. Есть список элементов. Пользователь может добавлять новые элементы списка с текстом 
+    “Новый элемент списка” нажав на кнопку "Добавить". 
+    3. *Дополнительное задание: При клике на элемент списка он должен быть удален. (по желанию)
+    -->
+    <div id="app">
+        <h2>Задание 1</h2>
+        <button @click="reverseBtnText">{{btnText}}</button>
+
+        <hr />
+        <h2>Задание 2</h2>
+        <ul>
+            <li v-for="(item, index) in itemsList" v-on:click="remove(index)">
+                {{item}} {{index + 1}}
+            </li>
+        </ul>
+        <button @click="addElementList">Добавить</button>
+
+        <hr />
+        <h2>Задание 3</h2>
+        <p>Добавлен метод remove, который удаляет элемент списка при клике по нему</p>
+    </div>
+
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+        const App = {
+            data() {
+                return {
+                    // Задание 1
+                    btnText: 'Перевернуть',
+                    // Задание 2
+                    newElementList: 'Новый элемент списка',
+                    itemsList: [...Array(5).fill('Элемент списка ')],
+                };
+            },
+            methods: {
+                // Задание 1
+                reverseBtnText() {
+                    this.btnText = this.btnText.split("").reverse().join("");
+                },
+                // Задание 2
+                addElementList() {
+                    return this.itemsList.push(this.newElementList);
+                },
+                // Задание 3
+                remove(idx) {
+                    this.itemsList.splice(idx, 1);
+                },
+            }, 
+        }
+
+        Vue.createApp(App).mount('#app');
+    </script>
+</body>
+</html>
