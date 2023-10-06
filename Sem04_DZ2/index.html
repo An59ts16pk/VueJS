@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seminar 04 DZ2</title>
+</head>
+<body>
+    <!--
+    Вы разрабатываете приложение для отображения и сортировки списка товаров. 
+    У вас есть массив объектов products, где каждый объект представляет товар 
+    с его названием и ценой. Вам необходимо отобразить список товаров и 
+    предоставить пользователю возможность сортировать товары по цене 
+    (по возрастанию и по убыванию).
+    -->
+    <div id="app">
+        <h1>Задание</h1>
+        <h2>Список товаров - название и цена:</h2>
+        <ol>
+            <li v-for="product in products" :key="product.id">
+                Название товара: {{product.title}} - цена: {{product.price}} руб.
+            </li>
+        </ol>
+        
+        <h2>Сортировка товаров по цене:</h2>
+        <button @click="arrSortAscending">По возрастанию</button>
+        <br><br>
+        <button @click="arrSortDescending">По убыванию</button>
+    </div>
+
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+        const App = {
+            data() {
+                return {
+                    // Задание
+                    products: [
+                        { id: 1, title: "Хлеб", price: 68 },
+                        { id: 2, title: "Молоко", price: 250 },
+                        { id: 3, title: "Соль", price: 15 },
+                        { id: 4, title: "Сахар", price: 258 },
+                        { id: 5, title: "Спички", price: 12 },
+                        { id: 6, title: "Мыло", price: 120 },
+                        { id: 7, title: "Сгущёнка", price: 290 },
+                        { id: 8, title: "Масло", price: 278 },
+                    ],
+                    
+                };
+            },
+            methods: {
+                // Задание
+                arrSortAscending() {
+                    return this.products.sort((x, y) => x.price - y.price);
+                },
+                arrSortDescending() {
+                    return this.products.sort((x, y) => y.price - x.price);
+                }
+                
+            }, 
+        }
+
+        Vue.createApp(App).mount('#app');
+    </script>
+</body>
+</html>
