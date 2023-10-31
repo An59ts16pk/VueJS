@@ -1,0 +1,41 @@
+@import 'vars';
+@import 'mixins';
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__box {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin: 0;
+        gap: 20px;
+    }
+
+    &__item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__button {
+        width: 52px;
+        height: 52px;
+        border: 1px solid #CDA274;
+        border-radius: 50%;
+        @extend %styleTextJost16;
+        text-transform: capitalize;
+        transition: all 0.6s ease-out;
+
+        &:hover {
+            background-color: #CDA274;
+        }
+    }
+    
+    &__item_active {
+        background-color: #F4F0EC;
+        border: none;
+    }
+}
